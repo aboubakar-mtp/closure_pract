@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Closure</title>
+		<script src="closure-library/closure/goog/base.js"></script>
+		<script src="mynotepad.js"></script>
+	</head>
+	<body>
+		<div id="notes">
+			
+		</div>
+		
+		<script>
+			function main(){
+				var noteData = [
+					{'title': 'Note 1', 'content': 'content of note 1'},
+					{'title': 'Note 2', 'content': 'content of note 2'},
+					{'title': 'Note 3', 'content': 'content of note 3'},
+					{'title': 'Note 4', 'content': 'content of note 4'}
+				];
+				
+			var noteListElement = document.getElementById('notes');
+			var notes = tutorial.notepad.makeNotes(noteData, noteListElement);
+			}
+			main();
+			
+		</script>
+	</body>
+</html>

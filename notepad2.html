@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<title>Closure practice</title>
+		
+		<style>
+			.source {
+			  cursor: move;
+			  -moz-user-select: none;
+			}
+			.drag {
+			  cursor: move;
+			  background: green;
+			}
+			.target {
+			}
+		
+		</style>
+		
+		<script src="closure-library/closure/goog/base.js"></script>
+		<script src="notepad2.js"></script>
+	</head>
+	
+	<body >
+	
+		<div id="drop"> drop loc </div>
+	
+		<div id="zipHeader">Aboubakar try</div>
+		<div id="zipBody"> zippy body to be toggle by clicking on header</div>
+		
+		<div id="notes">
+		
+		</div>
+		
+		<div id="drag"> source</div>
+		
+	</body>
+	<script>
+	
+		var zipH = document.getElementById("zipHeader");
+		var zipB = document.getElementById("zipBody");
+		
+		var zippy = new goog.ui.Zippy(zipH, zipB);
+		
+		function main(){
+			var noteData = [
+				{'title': "Note 1", "content" : "Content NOte 1"},
+				{'title': "Note 2", "content" : "Content NOte 2"},
+				{'title': "Note 3", "content" : "Content NOte 3"},
+				{'title': "Note 4", "content" : "Content NOte 4"},
+				{'title': "Note 5", "content" : "Content NOte 5"}
+			
+			];
+			var noteListElement = document.getElementById('notes');
+			var notes = tutorial.notepad.makeNotes(noteData, noteListElement);
+		}
+		
+		main();
+		
+		var src = document.getElementById("drag");
+		
+		var dest = document.getElementById("drop");
+		
+		var dds = new goog.fx.DragDrop(src);
+		
+		var ddd = new goog.fx.DragDrop(dest);
+		
+		dds.addTarget(ddd);
+		ddd.addTarget(dds);
+		
+		dds.setSourceClass(".source");
+		dds.setTargetClass(".target");
+		dds.setDragClass(".drag");
+		
+		ddd.setSourceClass(".source");
+		ddd.setTargetClass(".target");
+		ddd.setDragClass(".drag");
+		
+		dds.init();
+		ddd.init();
+		
+		goog.events.listen(ddd, 'dragover', dragOver);
+		
+		 function dragOver(event) {
+			event.dropTargetItem.element.style.background = 'black';
+		  }
+		
+		
+	</script>
+	
+</html>

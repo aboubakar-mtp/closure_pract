@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Drag and Drop</title>
+		<meta charset="utf-8">
+		<script src="closure-library/closure/goog/base.js"></script>
+		<script>
+			goog.require('goog.fx.DragDrop');
+			goog.require('goog.fx.DragDropGroup');
+			goog.require('goog.dom');
+			goog.require('goog.dom.TagName');
+			goog.require('goog.dom');
+			goog.require('goog.fx.DragListDirection');
+			goog.require('goog.fx.DragListGroup');
+		</script>
+		 <style>
+			body {
+			  font-family: verdana, sans-serif;
+			}
+	   
+		
+		.set_a {
+		  padding: 8px 12px;
+		  
+		  height: 72px;
+		  border: 2px solid #000000;
+		}
+		.set_a { float: left; }
+		
+		.set_a div { float: left; }
+		
+		
+		.set_b
+		{
+		  padding: 12px 8px;
+		 
+		  width: 68px;
+		  border: 2px solid #000000;
+		  float: right;
+		}
+		
+		div.red_box,
+		div.blue_box
+		{
+		  width: 50px;
+		  height: 50px;
+		  padding: 5px;
+		  margin: 4px 2px;
+		  font-family: verdana, sans-serif;
+		  font-size: 36px;
+		  font-weight: bold;
+		  text-align: center;
+		}
+		
+		div.red_box {
+		  border: 2px solid #CC0000;
+		  color: #CC0000;
+		}
+		
+		
+		div.blue_box {
+		  border: 2px solid #0000CC;
+		  color: #0000CC;
+		}
+		
+		
+		
+		.cursor_move {
+		  cursor: move;
+		  -moz-user-select: none;
+		}
+		.opacity_reduce {
+		  opacity: 0.4;
+		  -moz-opacity: 0.4;
+		  filter: alpha(opacity=40);
+		}
+		.drag_hover_class {
+		  border-color: #009900;
+		  background-color: #CCFFCC;
+		}
+  </style>
+	</title>
+	<body>
+	
+	
+		
+	<div id="horiz1_div" class="set_a">
+		<div class="red_box">1</div>
+		<div class="red_box">2</div>
+		<div class="red_box">3</div>
+		<div class="red_box">4</div>
+	</div>
+	
+	<br />
+	
+	
+	<div style="float: right;">
+	<h4 >set: B</h4>
+	</div>
+	<br />
+	<br />
+	<br />
+	<div id="vert1_div" class="set_b">
+		<div class="blue_box">A</div>
+		<div class="blue_box">B</div>
+		<div class="blue_box">C</div>
+		<div class="blue_box">D</div>
+	</div>
+	
+		
+	<script>	
+		var dlg = new goog.fx.DragListGroup();
+		
+		dlg.setDragItemHoverClass("cursor_move");
+		dlg.setDraggerElClass("cursor_move, opacity_reduce");
+		
+		dlg.addDragList(goog.dom.getElement("horiz1_div"), goog.fx.DragListDirection.RIGHT);
+		dlg.addDragList(goog.dom.getElement("vert1_div"),goog.fx.DragListDirection.DOWN);
+		
+		dlg.init();
+	
+	</script>
+	
+	</body>
+ </html>
